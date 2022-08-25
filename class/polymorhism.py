@@ -45,3 +45,31 @@ print(sum)
 
 print(operation.__gt__(add1,add2))
 
+
+#method overloading polymorphism
+
+class overload:
+    def add(self,a=None,b=None,c=None):
+        if c!=None:
+            s = a+b+c
+        elif b!=None:
+            s = a+b
+        else:
+            s = a
+        print("Method Overloadiong")
+        print(s)
+
+over = overload()
+over.add()
+
+
+#method overriding
+
+class base:
+    def out(self):
+        print("base")
+class env(base):
+    def out(self):
+        print("env")
+
+env.out(1)
