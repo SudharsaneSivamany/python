@@ -7,12 +7,8 @@ def generator(actual):
                 name.append(tmp)
         name.remove(tmp)
     yield name[0]
-name1 = input("Enter the name1:")
-name2 = input("Enter the name2:")
-name1 = name1.lower()
-name2 = name2.lower()
-name1 = name1.replace(" ","")
-name2 = name2.replace(" ","")
+name1 = input("Enter the name1:").lower().replace(" ","")
+name2 = input("Enter the name2:").lower().replace(" ","")
 init_count  = 0
 for i in range(0,len(name1)):
     for j in range(0,len(name2)):
