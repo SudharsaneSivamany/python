@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request
 
 app = Flask(__name__)
 
@@ -24,5 +24,18 @@ def india():
 def red():
     return redirect(url_for("hello_world"))
 
+@app.route('/login', methods=["POST", "GET"])
+def login():
+    if request.method == "POST":
+        username = request.form["nm"]
+        return redirect(url_for("user_info", user=username))
+    else:
+        return render_template("login.html")
+
+@app.route('/<user>')
+def user_info(user):
+    return f"<h1>Hi {user} !!!</h1>"
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
