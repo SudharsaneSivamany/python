@@ -9,7 +9,7 @@ class solv:
                     stone.append(ind)
             for length in range(min(stone),max(stone)+1):
                 full_length.append(length)
-                water_occupied += len(set(full_length)-set(stone))
+            water_occupied += len(set(full_length)-set(stone))
         return water_occupied
 a = [0,1,2,2,3,0,4]
 sol = solv()
