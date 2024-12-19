@@ -16,7 +16,7 @@ WORKDIR /app
 COPY . /app
 
 # Install the required packages
-RUN pip install --no-cache-dir psycopg2-binary
+RUN pip install --no-cache-dir psycopg2-binary==2.9.10
 
 # Adjust permissions and switch to non-root user
 RUN chown -R appuser:nonroot /app

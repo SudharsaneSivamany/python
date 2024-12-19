@@ -5,7 +5,6 @@ import psycopg2
 DB_USER = os.environ.get("DB_USER")
 DB_PASS = os.environ.get("DB_PASS")
 DB_NAME = os.environ.get("DB_NAME")
-INSTANCE_CONNECTION_NAME = 'your_project:your_region:your_instance'
 
 # Get credentials and create a DB connection
 

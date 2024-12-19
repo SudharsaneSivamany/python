@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visit-counter
+  labels:
+    app: visit-counter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visit-counter
+  template:
+    metadata:
+      labels:
+        app: visit-counter
+    spec:
+      containers:
+      - name: visit-counter
+        image: "<docker image>"
+        env:
+        - name: REDISHOST
+          value: "172.29.163.3"
+        - name: REDISPORT
+          value: "6378"
+        - name: REDIS_AUTH_STRING
+          valueFrom:
+            secretKeyRef:
+              name: redis-auth-string
+              key: auth
+        - name: REDIS_CA_CERT
+          valueFrom:
+            secretKeyRef:
+              name: my-rsa-secret
+              key: server_ca.pem
+        ports:
+        - name: http
+          containerPort: 8080
+
+# kubectl create secret generic my-rsa-secret --from-file=server_ca.pem
+# kubectl create secret generic redis-auth-string --from-literal=auth=<auth string>
